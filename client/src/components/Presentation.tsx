@@ -5,25 +5,35 @@ import TitleSlide from "./slides/TitleSlide";
 import IntroductionSlide from "./slides/IntroductionSlide";
 import EarlyStrugglesSlide from "./slides/EarlyStrugglesSlide";
 import DeregulationSlide from "./slides/DeregulationSlide";
+import BroadbandDigitalPakistanSlide from "./slides/BroadbandDigitalPakistanSlide";
+import DigitalPakistanVisionSlide from "./slides/DigitalPakistanVisionSlide";
+import NewKeyProductsServicesSlide from "./slides/NewKeyProductsServicesSlide";
+import ExportsGrowthSlide from "./slides/ExportsGrowthSlide";
+import TelecomRevenueSlide from "./slides/TelecomRevenueSlide";
+import NewEmploymentImpactSlide from "./slides/NewEmploymentImpactSlide";
+import FreelanceEconomySlide from "./slides/FreelanceEconomySlide";
+import PolicyWinsSlide from "./slides/PolicyWinsSlide";
 import DigitalTransformationSlide from "./slides/DigitalTransformationSlide";
-import KeyProductsSlide from "./slides/KeyProductsSlide";
-import ExportGrowthSlide from "./slides/ExportGrowthSlide";
-import EmploymentImpactSlide from "./slides/EmploymentImpactSlide";
 import GdpTelecomSlide from "./slides/GdpTelecomSlide";
 import CallToActionSlide from "./slides/CallToActionSlide";
 import { useSlideNavigation } from "@/hooks/use-slide-navigation";
 
 const slides = [
-  TitleSlide,
-  IntroductionSlide,
-  EarlyStrugglesSlide,
-  DeregulationSlide,
-  DigitalTransformationSlide,
-  KeyProductsSlide,
-  ExportGrowthSlide,
-  EmploymentImpactSlide,
-  GdpTelecomSlide,
-  CallToActionSlide,
+  TitleSlide,                     // 1
+  IntroductionSlide,              // 2
+  EarlyStrugglesSlide,            // 3
+  DeregulationSlide,              // 4
+  BroadbandDigitalPakistanSlide,  // 5
+  DigitalPakistanVisionSlide,     // 6
+  NewKeyProductsServicesSlide,    // 7
+  ExportsGrowthSlide,             // 8
+  TelecomRevenueSlide,            // 9
+  NewEmploymentImpactSlide,       // 10
+  FreelanceEconomySlide,          // 11
+  PolicyWinsSlide,                // 12
+  DigitalTransformationSlide,     // 13
+  GdpTelecomSlide,                // 14
+  CallToActionSlide,              // 15
 ];
 
 const Presentation = () => {
