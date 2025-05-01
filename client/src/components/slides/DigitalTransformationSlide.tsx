@@ -68,12 +68,12 @@ const DigitalTransformationSlide = ({ isActive }: SlideProps) => {
             <div className="bg-white rounded-xl p-6 shadow-md h-full">
               <h3 className="font-data font-semibold text-xl mb-6 text-primary">Impact of Digital Transformation</h3>
               
-              <div className="space-y-6">
+              <div className="space-y-3">
                 {progressStats.map((stat, index) => (
-                  <div key={stat.title} className="mb-6">
-                    <h4 className="font-medium text-gray-700 mb-2">{stat.title}</h4>
-                    <div className="relative pt-1">
-                      <div className="flex mb-2 items-center justify-between">
+                  <div key={stat.title} className="mb-3">
+                    <h4 className="font-medium text-gray-700 text-sm mb-1">{stat.title}</h4>
+                    <div className="relative">
+                      <div className="flex mb-1 items-center justify-between">
                         <div>
                           <span className="text-xs font-semibold inline-block text-gray-600">2010:</span>
                           <span className="text-xs font-semibold inline-block text-gray-800 ml-1">{stat.startValue}</span>
@@ -83,7 +83,7 @@ const DigitalTransformationSlide = ({ isActive }: SlideProps) => {
                           <span className={`text-xs font-semibold inline-block text-${stat.color} ml-1`}>{stat.endValue}</span>
                         </div>
                       </div>
-                      <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-200">
+                      <div className="overflow-hidden h-1.5 mb-2 text-xs flex rounded bg-gray-200">
                         <div 
                           className={`shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gray-400`} 
                           style={{ width: stat.title.includes("Broadband") ? "95%" : (stat.title === "Internet Penetration" ? "8%" : (stat.title === "Mobile Subscribers" ? "60%" : "15%")) }}

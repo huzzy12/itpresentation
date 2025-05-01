@@ -57,7 +57,7 @@ const EarlyStrugglesSlide = ({ isActive }: SlideProps) => {
                 initial={{ opacity: 0, x: item.position === "left" ? -20 : 20 }}
                 animate={isActive ? { opacity: 1, x: 0 } : { opacity: 0, x: item.position === "left" ? -20 : 20 }}
                 transition={{ duration: 0.5, delay: 0.2 + index * 0.15 }}
-                className="mb-12 last:mb-0"
+                className="mb-8 last:mb-0"
               >
                 <TimelineItem {...item} />
               </motion.div>
@@ -65,14 +65,14 @@ const EarlyStrugglesSlide = ({ isActive }: SlideProps) => {
           </div>
           
           <motion.div
-            className="mt-12 py-3 px-4 bg-gray-200 rounded-lg mx-auto max-w-lg"
+            className="mt-6 py-2 px-3 bg-gray-200 rounded-lg mx-auto max-w-lg"
             initial={{ opacity: 0, y: 20 }}
             animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.5, delay: 0.7 }}
           >
-            <p className="text-center text-sm font-medium text-gray-600">
-              <i className="fas fa-lightbulb text-accent mr-2"></i> 
-              In this era, telephone density was less than 2%, with long waiting lists for new connections and services concentrated in urban centers.
+            <p className="text-center text-xs font-medium text-gray-600">
+              <i className="fas fa-lightbulb text-accent mr-1"></i> 
+              In this era, telephone density was less than 2%, with long waiting lists for new connections.
             </p>
           </motion.div>
         </div>
