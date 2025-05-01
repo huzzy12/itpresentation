@@ -89,7 +89,7 @@ const PolicyRecommendationsSlide = ({ isActive }: SlideProps) => {
     >
       <div className="w-full max-w-6xl mx-auto">
         <motion.h2
-          className="text-center text-3xl font-bold mb-4"
+          className="text-center text-3xl font-bold mb-2"
           initial={{ opacity: 0, y: 10 }}
           animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
           transition={{ duration: 0.3 }}
@@ -97,32 +97,32 @@ const PolicyRecommendationsSlide = ({ isActive }: SlideProps) => {
           Policy Recommendations
         </motion.h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
           {recommendations.map((recommendation, i) => (
             <motion.div
               key={recommendation.title}
-              className="bg-gray-50 p-4 rounded-lg shadow-sm"
+              className="bg-gray-50 p-3 rounded-lg shadow-sm"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={isActive ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.4, delay: 0.1 + (i * 0.1) }}
             >
-              <div className="flex items-center mb-2">
-                <div className={`w-8 h-8 rounded-full bg-${recommendation.color}/20 flex items-center justify-center mr-2 flex-shrink-0`}>
-                  <i className={`fas ${recommendation.icon} text-${recommendation.color} text-xs`}></i>
+              <div className="flex items-center mb-1">
+                <div className={`w-6 h-6 rounded-full bg-${recommendation.color}/20 flex items-center justify-center mr-2 flex-shrink-0`}>
+                  <i className={`fas ${recommendation.icon} text-${recommendation.color} text-[8px]`}></i>
                 </div>
-                <h3 className="text-sm font-bold">{recommendation.title}</h3>
+                <h3 className="text-xs font-bold">{recommendation.title}</h3>
               </div>
               
-              <ul className="space-y-1 pl-4">
+              <ul className="space-y-0.5 pl-3">
                 {recommendation.items.map((item, j) => (
                   <motion.li
                     key={j}
-                    className="text-xs text-gray-700 relative"
+                    className="text-[10px] text-gray-700 relative"
                     initial={{ opacity: 0, x: -5 }}
                     animate={isActive ? { opacity: 1, x: 0 } : { opacity: 0, x: -5 }}
                     transition={{ duration: 0.3, delay: 0.2 + (i * 0.1) + (j * 0.05) }}
                   >
-                    <span className="absolute -left-4 top-1.5 w-1.5 h-1.5 rounded-full bg-gray-400"></span>
+                    <span className="absolute -left-3 top-1.5 w-1 h-1 rounded-full bg-gray-400"></span>
                     {item}
                   </motion.li>
                 ))}
@@ -132,41 +132,41 @@ const PolicyRecommendationsSlide = ({ isActive }: SlideProps) => {
         </div>
         
         <motion.div
-          className="bg-gray-50 p-4 rounded-lg shadow-sm"
+          className="bg-gray-50 p-3 rounded-lg shadow-sm"
           initial={{ opacity: 0, y: 20 }}
           animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.4, delay: 0.6 }}
         >
-          <h3 className="text-center text-base font-bold mb-3">Implementation Roadmap</h3>
+          <h3 className="text-center text-sm font-bold mb-2">Implementation Roadmap</h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
             {implementationApproach.map((phase, i) => (
               <motion.div
                 key={phase.phase}
-                className={`p-3 rounded-lg ${
+                className={`p-2 rounded-lg ${
                   i === 0 ? 'bg-blue-50' : i === 1 ? 'bg-purple-50' : 'bg-green-50'
                 }`}
                 initial={{ opacity: 0, y: 10 }}
                 animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
                 transition={{ duration: 0.3, delay: 0.7 + (i * 0.1) }}
               >
-                <h4 className={`text-sm font-bold mb-1 ${
+                <h4 className={`text-xs font-bold mb-0.5 ${
                   i === 0 ? 'text-blue-700' : i === 1 ? 'text-purple-700' : 'text-green-700'
                 }`}>
                   {phase.phase}
                 </h4>
-                <p className="text-xs text-gray-500 mb-2">
+                <p className="text-[10px] text-gray-500 mb-1">
                   <i className="far fa-clock mr-1"></i>
                   {phase.timeframe}
                 </p>
                 
-                <ul className="space-y-1">
+                <ul className="space-y-0.5">
                   {phase.actions.map((action, j) => (
                     <li key={j} className="flex items-start">
-                      <i className={`fas fa-arrow-right text-[10px] mt-1 mr-1.5 ${
+                      <i className={`fas fa-arrow-right text-[8px] mt-0.5 mr-1 ${
                         i === 0 ? 'text-blue-500' : i === 1 ? 'text-purple-500' : 'text-green-500'
                       }`}></i>
-                      <span className="text-xs">{action}</span>
+                      <span className="text-[10px]">{action}</span>
                     </li>
                   ))}
                 </ul>
@@ -176,17 +176,17 @@ const PolicyRecommendationsSlide = ({ isActive }: SlideProps) => {
         </motion.div>
         
         <motion.div
-          className="mt-4 p-3 bg-indigo-50 rounded-lg text-center"
+          className="mt-2 p-2 bg-indigo-50 rounded-lg text-center"
           initial={{ opacity: 0, y: 10 }}
           animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
           transition={{ duration: 0.3, delay: 1 }}
         >
-          <p className="text-xs text-indigo-800">
-            <span className="font-medium">Key Success Factor:</span> Cross-ministerial collaboration with private sector engagement through a dedicated Digital Economy Taskforce
+          <p className="text-[10px] text-indigo-800">
+            <span className="font-medium">Key Success Factor:</span> Cross-ministerial collaboration with private sector engagement
           </p>
           
           <div className="flex justify-center mt-1">
-            <span className="text-xs text-gray-500">23 / 28</span>
+            <span className="text-xs text-gray-500">22 / 27</span>
           </div>
         </motion.div>
       </div>

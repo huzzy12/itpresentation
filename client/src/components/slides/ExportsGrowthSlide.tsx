@@ -27,11 +27,11 @@ const ExportsGrowthSlide = ({ isActive }: SlideProps) => {
   return (
     <section
       data-slide="9"
-      className={`slide ${isActive ? 'active' : ''} absolute inset-0 bg-white flex flex-col justify-center items-center text-gray-900 p-8`}
+      className={`slide ${isActive ? 'active' : ''} absolute inset-0 bg-white flex flex-col justify-center items-center text-gray-900 p-4`}
     >
-      <div className="max-w-5xl mx-auto">
+      <div className="w-full max-w-6xl mx-auto">
         <motion.h2
-          className="font-heading text-4xl text-center mb-4"
+          className="text-center text-3xl font-bold mb-2"
           initial={{ opacity: 0, y: 20 }}
           animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5 }}
@@ -40,7 +40,7 @@ const ExportsGrowthSlide = ({ isActive }: SlideProps) => {
         </motion.h2>
         
         <motion.p
-          className="text-center text-gray-600 mb-8"
+          className="text-center text-gray-600 mb-4 text-sm"
           initial={{ opacity: 0, y: 20 }}
           animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5, delay: 0.1 }}
@@ -49,16 +49,16 @@ const ExportsGrowthSlide = ({ isActive }: SlideProps) => {
         </motion.p>
         
         <motion.div
-          className="bg-gray-50 rounded-xl p-6 shadow-md"
+          className="bg-gray-50 rounded-lg p-4 shadow-sm"
           initial={{ opacity: 0, y: 20 }}
           animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <div className="h-72">
+          <div className="h-60">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart
                 data={exportData}
-                margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+                margin={{ top: 10, right: 30, left: 20, bottom: 5 }}
               >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="year" label={{ value: 'Fiscal Year', position: 'insideBottom', offset: -5 }} />
@@ -74,81 +74,73 @@ const ExportsGrowthSlide = ({ isActive }: SlideProps) => {
           </div>
           
           <motion.div
-            className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4"
+            className="mt-3 grid grid-cols-1 md:grid-cols-3 gap-3"
             initial={{ opacity: 0, y: 20 }}
             animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <div className="bg-white rounded-lg p-4 shadow-sm border-l-4 border-primary">
-              <h3 className="font-data font-bold text-sm text-primary mb-1">Growth Factors</h3>
-              <ul className="space-y-1">
+            <div className="bg-white rounded-lg p-3 shadow-sm border-l-4 border-primary">
+              <h3 className="font-bold text-xs text-primary mb-1">Growth Factors</h3>
+              <ul className="space-y-0.5">
                 <li className="flex items-start">
-                  <i className="fas fa-check text-xs text-primary mt-1 mr-1"></i>
+                  <i className="fas fa-check text-[10px] text-primary mt-1 mr-1"></i>
                   <p className="text-xs text-gray-600">Global demand for digital services</p>
                 </li>
                 <li className="flex items-start">
-                  <i className="fas fa-check text-xs text-primary mt-1 mr-1"></i>
+                  <i className="fas fa-check text-[10px] text-primary mt-1 mr-1"></i>
                   <p className="text-xs text-gray-600">Competitive rates & talent quality</p>
                 </li>
                 <li className="flex items-start">
-                  <i className="fas fa-check text-xs text-primary mt-1 mr-1"></i>
+                  <i className="fas fa-check text-[10px] text-primary mt-1 mr-1"></i>
                   <p className="text-xs text-gray-600">Government export incentives</p>
                 </li>
               </ul>
             </div>
             
-            <div className="bg-white rounded-lg p-4 shadow-sm border-l-4 border-secondary">
-              <h3 className="font-data font-bold text-sm text-secondary mb-1">Export Composition</h3>
-              <ul className="space-y-1">
+            <div className="bg-white rounded-lg p-3 shadow-sm border-l-4 border-blue-500">
+              <h3 className="font-bold text-xs text-blue-500 mb-1">Export Composition</h3>
+              <ul className="space-y-0.5">
                 <li className="flex items-start">
-                  <i className="fas fa-check text-xs text-secondary mt-1 mr-1"></i>
+                  <i className="fas fa-check text-[10px] text-blue-500 mt-1 mr-1"></i>
                   <p className="text-xs text-gray-600">Software development (45%)</p>
                 </li>
                 <li className="flex items-start">
-                  <i className="fas fa-check text-xs text-secondary mt-1 mr-1"></i>
+                  <i className="fas fa-check text-[10px] text-blue-500 mt-1 mr-1"></i>
                   <p className="text-xs text-gray-600">IT Enabled Services (30%)</p>
                 </li>
                 <li className="flex items-start">
-                  <i className="fas fa-check text-xs text-secondary mt-1 mr-1"></i>
+                  <i className="fas fa-check text-[10px] text-blue-500 mt-1 mr-1"></i>
                   <p className="text-xs text-gray-600">Freelancing (15%)</p>
                 </li>
                 <li className="flex items-start">
-                  <i className="fas fa-check text-xs text-secondary mt-1 mr-1"></i>
+                  <i className="fas fa-check text-[10px] text-blue-500 mt-1 mr-1"></i>
                   <p className="text-xs text-gray-600">Emerging niches (10%)</p>
                 </li>
               </ul>
             </div>
             
-            <div className="bg-white rounded-lg p-4 shadow-sm border-l-4 border-accent">
-              <h3 className="font-data font-bold text-sm text-accent mb-1">Recent Highlights</h3>
-              <ul className="space-y-1">
+            <div className="bg-white rounded-lg p-3 shadow-sm border-l-4 border-purple-500">
+              <h3 className="font-bold text-xs text-purple-500 mb-1">Recent Highlights</h3>
+              <ul className="space-y-0.5">
                 <li className="flex items-start">
-                  <i className="fas fa-check text-xs text-accent mt-1 mr-1"></i>
+                  <i className="fas fa-check text-[10px] text-purple-500 mt-1 mr-1"></i>
                   <p className="text-xs text-gray-600">27% year-on-year growth in FY 2023-24</p>
                 </li>
                 <li className="flex items-start">
-                  <i className="fas fa-check text-xs text-accent mt-1 mr-1"></i>
+                  <i className="fas fa-check text-[10px] text-purple-500 mt-1 mr-1"></i>
                   <p className="text-xs text-gray-600">Mar 2024: $306M (↑36% YoY)</p>
                 </li>
                 <li className="flex items-start">
-                  <i className="fas fa-check text-xs text-accent mt-1 mr-1"></i>
+                  <i className="fas fa-check text-[10px] text-purple-500 mt-1 mr-1"></i>
                   <p className="text-xs text-gray-600">Feb→Mar: ↑19% month-on-month</p>
                 </li>
               </ul>
             </div>
           </motion.div>
           
-          <motion.div
-            className="mt-4 pt-4 border-t border-gray-200 text-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-          >
-            <p className="text-xs text-gray-500">
-              <i className="fas fa-info-circle mr-1"></i>
-              Source: Finance Division, Pakistan Economic Survey 2023-24
-            </p>
-          </motion.div>
+          <div className="flex justify-center mt-2">
+            <span className="text-xs text-gray-500">8 / 27</span>
+          </div>
         </motion.div>
       </div>
     </section>
