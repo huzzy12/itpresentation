@@ -1,145 +1,164 @@
 import { motion } from "framer-motion";
 import { SlideProps } from "@/types";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const DeregulationSlide = ({ isActive }: SlideProps) => {
-  const policyChanges = [
-    { year: "2003", title: "Telecom Deregulation Policy", description: "Opening market to competition" },
-    { year: "2004", title: "Mobile Number Portability", description: "Increased consumer choice" },
-    { year: "2006", title: "Establishment of USF", description: "Universal Service Fund for rural areas" },
-    { year: "2007", title: "IT Policy & Action Plan", description: "First comprehensive IT roadmap" },
-    { year: "2008", title: "Broadband Policy", description: "Accelerating internet adoption" }
+  // Data from PTA telecom indicators
+  const subscriberData = [
+    { year: 2001, subscribers: 0.3 },
+    { year: 2003, subscribers: 2.4 },
+    { year: 2006, subscribers: 22 },
+    { year: 2009, subscribers: 60 },
+    { year: 2012, subscribers: 95 },
+    { year: 2015, subscribers: 125 },
+    { year: 2018, subscribers: 160 }
   ];
+
+  const keyEvents = [
+    {
+      year: "2003",
+      event: "Deregulation Policy opens market to competition",
+      icon: "fa-unlock"
+    },
+    {
+      year: "2006",
+      event: "Etisalat buys 26% PTCL stake for $2.6 billion",
+      icon: "fa-handshake"
+    },
+    {
+      year: "2007",
+      event: "Pakistan Telecommunication (Re-Organization) Act amended",
+      icon: "fa-file-alt"
+    },
+    {
+      year: "2008",
+      event: "LDI and LL licenses issued to new operators",
+      icon: "fa-id-card"
+    }
+  ];
+
+  const CustomTooltip = ({ active, payload, label }: any) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="bg-white p-2 border border-gray-200 shadow-md rounded-md">
+          <p className="text-sm font-medium">{`${label}: ${payload[0].value}M subscribers`}</p>
+        </div>
+      );
+    }
+    return null;
+  };
 
   return (
     <section
-      data-slide="4"
+      data-slide="5"
       className={`slide ${isActive ? 'active' : ''} absolute inset-0 bg-white flex flex-col justify-center items-center text-gray-900 p-8`}
     >
       <div className="max-w-5xl mx-auto">
         <motion.h2
-          className="font-heading text-4xl text-center mb-8"
+          className="font-heading text-4xl text-center mb-6"
           initial={{ opacity: 0, y: 20 }}
           animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5 }}
         >
-          2001–2010: <span className="text-secondary">Deregulation Era</span>
+          2001–2010: <span className="text-secondary">Deregulation & Mobile Boom</span>
         </motion.h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Column 1: PTCL Privatization */}
+        <div className="flex flex-col md:flex-row gap-8">
+          {/* Left Column - Key Events */}
           <motion.div
-            className="bg-gray-50 rounded-xl p-6 shadow-md h-full"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            <div className="flex items-center mb-4">
-              <div className="bg-secondary/10 p-3 rounded-full mr-3">
-                <i className="fas fa-building text-secondary text-xl"></i>
-              </div>
-              <h3 className="font-data font-semibold text-lg">PTCL Privatization</h3>
-            </div>
-            <div className="space-y-3">
-              <p className="text-gray-600 text-sm">2005-2006: 26% shares sold to Etisalat for $2.6 billion</p>
-              <p className="text-gray-600 text-sm">End of state monopoly in telecom sector</p>
-              <p className="text-gray-600 text-sm">Modernization of infrastructure begins</p>
-              <div className="pt-2">
-                <img 
-                  src="https://images.unsplash.com/photo-1603969072881-b0fc7f3d77d7?q=80&w=2070&auto=format&fit=crop" 
-                  alt="Telecom tower" 
-                  className="rounded-lg h-32 w-full object-cover" 
-                />
-              </div>
-            </div>
-          </motion.div>
-          
-          {/* Column 2: Mobile Boom */}
-          <motion.div
-            className="bg-gray-50 rounded-xl p-6 shadow-md h-full"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            className="md:w-2/5"
+            initial={{ opacity: 0, x: -20 }}
+            animate={isActive ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <div className="flex items-center mb-4">
-              <div className="bg-primary/10 p-3 rounded-full mr-3">
-                <i className="fas fa-mobile-alt text-primary text-xl"></i>
+            <div className="bg-gray-50 rounded-xl p-6 shadow-md h-full">
+              <h3 className="font-data font-semibold text-xl mb-4 text-secondary">Key Developments</h3>
+              
+              <div className="space-y-4">
+                {keyEvents.map((item, index) => (
+                  <motion.div 
+                    key={item.year}
+                    className="flex items-start"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={isActive ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                    transition={{ duration: 0.5, delay: 0.3 + (index * 0.1) }}
+                  >
+                    <div className="mr-4 flex-shrink-0">
+                      <div className="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center text-secondary">
+                        <i className={`fas ${item.icon}`}></i>
+                      </div>
+                    </div>
+                    <div>
+                      <p className="font-data font-bold text-base">{item.year}</p>
+                      <p className="text-sm text-gray-600">{item.event}</p>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
-              <h3 className="font-data font-semibold text-lg">Mobile Boom</h3>
-            </div>
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-gray-600 text-sm">2000:</span>
-                <span className="font-data font-semibold">0.3M users</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-gray-600 text-sm">2005:</span>
-                <span className="font-data font-semibold">12.5M users</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-gray-600 text-sm">2010:</span>
-                <span className="font-data font-semibold">100M+ users</span>
-              </div>
-              <div className="pt-2">
-                <div className="relative">
-                  <div className="relative h-10 bg-gray-200 rounded">
-                    <div className="absolute top-0 left-0 h-full w-4 bg-gray-400 rounded-l"></div>
-                    <div className="absolute top-0 left-4 h-full w-8 bg-blue-400"></div>
-                    <div className="absolute top-0 left-12 h-full w-[calc(100%-3rem)] bg-primary rounded-r"></div>
-                  </div>
-                  <div className="flex justify-between text-xs text-gray-500 mt-1">
-                    <span>2000</span>
-                    <span>2005</span>
-                    <span>2010</span>
-                  </div>
-                </div>
-              </div>
-              <p className="text-sm text-gray-600 mt-2">Introduction of new players: Telenor, Warid, Ufone dramatically increased competition</p>
+              
+              <motion.div
+                className="mt-6 bg-white rounded-lg p-3 border border-gray-200"
+                initial={{ opacity: 0, y: 20 }}
+                animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, delay: 0.7 }}
+              >
+                <p className="text-xs text-gray-600">
+                  <i className="fas fa-info-circle text-secondary mr-1"></i>
+                  Source: Finance Asia (PTCL sale), Ministry of Interior (Telecom Acts)
+                </p>
+              </motion.div>
             </div>
           </motion.div>
           
-          {/* Column 3: Key Policy Changes */}
+          {/* Right Column - Mobile Growth Chart */}
           <motion.div
-            className="bg-gray-50 rounded-xl p-6 shadow-md h-full"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            className="md:w-3/5"
+            initial={{ opacity: 0, x: 20 }}
+            animate={isActive ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <div className="flex items-center mb-4">
-              <div className="bg-accent/10 p-3 rounded-full mr-3">
-                <i className="fas fa-file-contract text-accent text-xl"></i>
+            <div className="bg-gray-50 rounded-xl p-6 shadow-md h-full">
+              <h3 className="font-data font-semibold text-xl mb-4 text-secondary">Mobile Subscribers Growth</h3>
+              
+              <div className="h-64">
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart data={subscriberData} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#eaeaea" />
+                    <XAxis dataKey="year" tick={{fontSize: 12}} />
+                    <YAxis tickFormatter={(value) => `${value}M`} tick={{fontSize: 12}} />
+                    <Tooltip content={<CustomTooltip />} />
+                    <Legend wrapperStyle={{fontSize: '10px'}} />
+                    <Line 
+                      type="monotone" 
+                      dataKey="subscribers" 
+                      name="Mobile Subscribers (Millions)" 
+                      stroke="#7C3AED" 
+                      strokeWidth={2}
+                      activeDot={{ r: 6 }}
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
               </div>
-              <h3 className="font-data font-semibold text-lg">Key Policy Changes</h3>
-            </div>
-            <div className="space-y-3">
-              {policyChanges.map((policy, index) => (
-                <motion.div 
-                  key={policy.year} 
-                  className="flex"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={isActive ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
-                  transition={{ duration: 0.3, delay: 0.4 + (index * 0.1) }}
-                >
-                  <div className="shrink-0 w-24 text-xs pt-1">{policy.year}</div>
+              
+              <motion.div
+                className="mt-4 bg-white rounded-lg p-3 border border-gray-200"
+                initial={{ opacity: 0, y: 20 }}
+                animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+              >
+                <div className="flex justify-between items-center">
                   <div>
-                    <p className="text-gray-700 font-medium text-sm">{policy.title}</p>
-                    <p className="text-gray-500 text-xs">{policy.description}</p>
+                    <p className="text-sm font-medium">Mobile subscribers:</p>
+                    <p className="text-xs text-gray-600">2001: ~0.3M → 2018: ~160M</p>
                   </div>
-                </motion.div>
-              ))}
+                  <div className="text-right">
+                    <p className="text-xs text-gray-600">Source: Pakistan Telecommunication Authority (PTA)</p>
+                  </div>
+                </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
-        
-        <motion.div
-          className="mt-8 border-t border-gray-200 pt-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5, delay: 0.7 }}
-        >
-          <p className="text-center text-gray-600">
-            <strong>Impact:</strong> This era laid the foundations for Pakistan's digital transformation with regulatory reforms that dramatically increased telecom access.
-          </p>
-        </motion.div>
       </div>
     </section>
   );

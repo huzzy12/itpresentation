@@ -68,14 +68,14 @@ const ExportGrowthSlide = ({ isActive }: SlideProps) => {
           animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <div className="h-80">
+          <div className="h-60">
             <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={chartData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="year" />
-                <YAxis tickFormatter={(value) => `$${value}B`} />
+              <LineChart data={chartData} margin={{ top: 5, right: 20, left: 0, bottom: 0 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#eaeaea" />
+                <XAxis dataKey="year" tick={{fontSize: 10}} />
+                <YAxis tickFormatter={(value) => `$${value}B`} tick={{fontSize: 10}} />
                 <Tooltip content={<CustomTooltip />} />
-                <Legend />
+                <Legend wrapperStyle={{fontSize: '10px'}} />
                 <Line 
                   type="monotone" 
                   dataKey="value" 
@@ -83,14 +83,14 @@ const ExportGrowthSlide = ({ isActive }: SlideProps) => {
                   stroke="#10B981" 
                   strokeWidth={2}
                   fill="#10B981"
-                  activeDot={{ r: 8 }}
+                  activeDot={{ r: 6 }}
                 />
               </LineChart>
             </ResponsiveContainer>
           </div>
           
           <motion.div
-            className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6"
+            className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-3"
             initial={{ opacity: 0, y: 20 }}
             animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.5, delay: 0.4 }}
@@ -98,13 +98,13 @@ const ExportGrowthSlide = ({ isActive }: SlideProps) => {
             {milestones.map((milestone, index) => (
               <motion.div
                 key={milestone.title}
-                className={`bg-white rounded-lg p-4 shadow-sm border-l-4 border-${milestone.color}`}
+                className={`bg-white rounded-lg p-3 shadow-sm border-l-4 border-${milestone.color}`}
                 initial={{ opacity: 0, x: 20 }}
                 animate={isActive ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
                 transition={{ duration: 0.3, delay: 0.5 + (index * 0.1) }}
               >
-                <h3 className={`font-data font-semibold text-${milestone.color}`}>{milestone.title}</h3>
-                <p className="text-gray-600 mt-2 text-sm">{milestone.content}</p>
+                <h3 className={`font-data font-semibold text-${milestone.color} text-sm`}>{milestone.title}</h3>
+                <p className="text-gray-600 mt-1 text-xs">{milestone.content}</p>
               </motion.div>
             ))}
           </motion.div>
