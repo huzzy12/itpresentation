@@ -68,20 +68,22 @@ const KeyProductsServicesSlide = ({ isActive }: SlideProps) => {
           Key Products & <span className="text-primary">Services</span>
         </motion.h2>
         
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
           {products.map((product, index) => (
             <motion.div
               key={product.title}
-              className="bg-white rounded-xl p-5 shadow-md"
+              className="bg-white rounded-xl p-3 shadow-md"
               initial={{ opacity: 0, y: 20 }}
               animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.5, delay: 0.2 + (index * 0.05) }}
             >
-              <div className={`w-12 h-12 rounded-full bg-${product.color}/20 flex items-center justify-center mb-3`}>
-                <i className={`fas ${product.icon} text-${product.color} text-xl`}></i>
+              <div className="flex items-center">
+                <div className={`w-8 h-8 rounded-full bg-${product.color}/20 flex items-center justify-center mr-2`}>
+                  <i className={`fas ${product.icon} text-${product.color}`}></i>
+                </div>
+                <h3 className="font-data font-bold text-sm">{product.title}</h3>
               </div>
-              <h3 className="font-data font-bold text-base mb-1">{product.title}</h3>
-              <p className="text-xs text-gray-600">{product.description}</p>
+              <p className="text-xs text-gray-600 mt-1">{product.description}</p>
             </motion.div>
           ))}
         </div>
@@ -92,29 +94,29 @@ const KeyProductsServicesSlide = ({ isActive }: SlideProps) => {
           animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5, delay: 0.7 }}
         >
-          <h3 className="font-data font-semibold text-lg mb-3 text-primary">Industry Highlights</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6">
+          <h3 className="font-data font-semibold text-sm mb-2 text-primary">Industry Highlights</h3>
+          <div className="grid grid-cols-2 gap-y-2 gap-x-4">
             <div className="flex items-center">
-              <div className="w-3 h-3 rounded-full bg-blue-600 mr-2"></div>
-              <p className="text-sm">700+ tech companies registered with PSEB</p>
+              <div className="w-2 h-2 rounded-full bg-blue-600 mr-2"></div>
+              <p className="text-xs">700+ tech companies</p>
             </div>
             <div className="flex items-center">
-              <div className="w-3 h-3 rounded-full bg-green-600 mr-2"></div>
-              <p className="text-sm">300+ startups in various tech sectors</p>
+              <div className="w-2 h-2 rounded-full bg-green-600 mr-2"></div>
+              <p className="text-xs">300+ startups</p>
             </div>
             <div className="flex items-center">
-              <div className="w-3 h-3 rounded-full bg-purple-600 mr-2"></div>
-              <p className="text-sm">IT services exports to 170+ global markets</p>
+              <div className="w-2 h-2 rounded-full bg-purple-600 mr-2"></div>
+              <p className="text-xs">Exports to 170+ markets</p>
             </div>
             <div className="flex items-center">
-              <div className="w-3 h-3 rounded-full bg-yellow-600 mr-2"></div>
-              <p className="text-sm">Growing specialization in fintech, insurtech</p>
+              <div className="w-2 h-2 rounded-full bg-yellow-600 mr-2"></div>
+              <p className="text-xs">Growing fintech industry</p>
             </div>
           </div>
           
-          <div className="mt-4 pt-4 border-t border-gray-200 text-center">
-            <p className="text-sm text-gray-700">
-              Pakistan's IT & ITeS sector serves diverse international clients, with exports dominated by software development (45%), IT-enabled services (30%), and freelancing (15%).
+          <div className="mt-3 pt-3 border-t border-gray-200 text-center">
+            <p className="text-xs text-gray-700">
+              Exports: software development (45%), IT-enabled services (30%), freelancing (15%), others (10%)
             </p>
           </div>
         </motion.div>

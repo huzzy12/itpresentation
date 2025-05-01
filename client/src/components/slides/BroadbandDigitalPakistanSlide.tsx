@@ -57,9 +57,9 @@ const BroadbandDigitalPakistanSlide = ({ isActive }: SlideProps) => {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <div className="bg-white rounded-xl p-6 shadow-md h-full">
-              <h3 className="font-data font-semibold text-xl mb-6 text-accent">Key Developments</h3>
+              <h3 className="font-data font-semibold text-lg mb-3 text-accent">Key Developments</h3>
               
-              <div className="space-y-5">
+              <div className="space-y-3">
                 {keyEvents.map((item, index) => (
                   <motion.div 
                     key={item.year}
@@ -68,14 +68,14 @@ const BroadbandDigitalPakistanSlide = ({ isActive }: SlideProps) => {
                     animate={isActive ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                     transition={{ duration: 0.5, delay: 0.3 + (index * 0.1) }}
                   >
-                    <div className="mr-4 flex-shrink-0">
-                      <div className={`w-12 h-12 rounded-full bg-${item.color}/20 flex items-center justify-center text-${item.color}`}>
+                    <div className="mr-3 flex-shrink-0">
+                      <div className={`w-10 h-10 rounded-full bg-${item.color}/20 flex items-center justify-center text-${item.color}`}>
                         <i className={`fas ${item.icon}`}></i>
                       </div>
                     </div>
                     <div>
-                      <p className="font-data font-bold text-base text-gray-900">{item.year}: {item.title}</p>
-                      <p className="text-sm text-gray-600">{item.description}</p>
+                      <p className="font-data font-bold text-sm text-gray-900">{item.year}: {item.title}</p>
+                      <p className="text-xs text-gray-600">{item.description}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -103,21 +103,21 @@ const BroadbandDigitalPakistanSlide = ({ isActive }: SlideProps) => {
             transition={{ duration: 0.5, delay: 0.4 }}
           >
             <div className="bg-white rounded-xl p-6 shadow-md h-full">
-              <h3 className="font-data font-semibold text-xl mb-6 text-accent">Digital Pakistan Policy Objectives</h3>
+              <h3 className="font-data font-semibold text-lg mb-3 text-accent">Digital Pakistan Policy Objectives</h3>
               
-              <div className="space-y-4">
+              <div className="space-y-2">
                 <motion.div
                   className="flex items-start"
                   initial={{ opacity: 0, y: 20 }}
                   animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{ duration: 0.5, delay: 0.5 }}
                 >
-                  <div className="mr-3 flex-shrink-0 w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center text-accent">
+                  <div className="mr-2 flex-shrink-0 w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center text-accent">
                     <span className="font-bold">1</span>
                   </div>
                   <div>
-                    <h4 className="font-data font-semibold text-base">Digital Infrastructure Development</h4>
-                    <p className="text-sm text-gray-600">Expanding broadband access and reducing costs</p>
+                    <h4 className="font-data font-semibold text-xs">Digital Infrastructure Development</h4>
+                    <p className="text-xs text-gray-600">Expanding broadband access and reducing costs</p>
                   </div>
                 </motion.div>
                 
@@ -127,12 +127,12 @@ const BroadbandDigitalPakistanSlide = ({ isActive }: SlideProps) => {
                   animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{ duration: 0.5, delay: 0.6 }}
                 >
-                  <div className="mr-3 flex-shrink-0 w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center text-accent">
+                  <div className="mr-2 flex-shrink-0 w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center text-accent">
                     <span className="font-bold">2</span>
                   </div>
                   <div>
-                    <h4 className="font-data font-semibold text-base">E-Government Services</h4>
-                    <p className="text-sm text-gray-600">Paperless, efficient government operations</p>
+                    <h4 className="font-data font-semibold text-xs">E-Government Services</h4>
+                    <p className="text-xs text-gray-600">Paperless, efficient government operations</p>
                   </div>
                 </motion.div>
                 
@@ -142,12 +142,12 @@ const BroadbandDigitalPakistanSlide = ({ isActive }: SlideProps) => {
                   animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{ duration: 0.5, delay: 0.7 }}
                 >
-                  <div className="mr-3 flex-shrink-0 w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center text-accent">
+                  <div className="mr-2 flex-shrink-0 w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center text-accent">
                     <span className="font-bold">3</span>
                   </div>
                   <div>
-                    <h4 className="font-data font-semibold text-base">Digital Skills & Literacy</h4>
-                    <p className="text-sm text-gray-600">Training workforce for digital economy</p>
+                    <h4 className="font-data font-semibold text-xs">Digital Skills & Literacy</h4>
+                    <p className="text-xs text-gray-600">Training workforce for digital economy</p>
                   </div>
                 </motion.div>
                 
@@ -157,12 +157,12 @@ const BroadbandDigitalPakistanSlide = ({ isActive }: SlideProps) => {
                   animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{ duration: 0.5, delay: 0.8 }}
                 >
-                  <div className="mr-3 flex-shrink-0 w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center text-accent">
+                  <div className="mr-2 flex-shrink-0 w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center text-accent">
                     <span className="font-bold">4</span>
                   </div>
                   <div>
-                    <h4 className="font-data font-semibold text-base">IT Exports & Innovation</h4>
-                    <p className="text-sm text-gray-600">Increasing IT exports and fostering startups</p>
+                    <h4 className="font-data font-semibold text-xs">IT Exports & Innovation</h4>
+                    <p className="text-xs text-gray-600">Increasing IT exports and fostering startups</p>
                   </div>
                 </motion.div>
                 
@@ -172,12 +172,12 @@ const BroadbandDigitalPakistanSlide = ({ isActive }: SlideProps) => {
                   animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{ duration: 0.5, delay: 0.9 }}
                 >
-                  <div className="mr-3 flex-shrink-0 w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center text-accent">
+                  <div className="mr-2 flex-shrink-0 w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center text-accent">
                     <span className="font-bold">5</span>
                   </div>
                   <div>
-                    <h4 className="font-data font-semibold text-base">Legal & Regulatory Framework</h4>
-                    <p className="text-sm text-gray-600">Cybersecurity, data protection, and digital payments laws</p>
+                    <h4 className="font-data font-semibold text-xs">Legal & Regulatory Framework</h4>
+                    <p className="text-xs text-gray-600">Cybersecurity, data protection, digital payments laws</p>
                   </div>
                 </motion.div>
               </div>
