@@ -20,7 +20,14 @@ import ForeignInvestmentSlide from "./slides/ForeignInvestmentSlide";
 import InnovationEcosystemSlide from "./slides/InnovationEcosystemSlide";
 import DigitalConnectivitySlide from "./slides/DigitalConnectivitySlide";
 import CompetitiveAdvantagesSlide from "./slides/CompetitiveAdvantagesSlide";
-import CallToActionSlide from "./slides/CallToActionSlide";
+import ChallengesOpportunitiesSlide from "./slides/ChallengesOpportunitiesSlide";
+import FutureGrowthSlide from "./slides/FutureGrowthSlide";
+import PolicyRecommendationsSlide from "./slides/PolicyRecommendationsSlide";
+import CaseStudiesSlide from "./slides/CaseStudiesSlide";
+import RegionalComparisonSlide from "./slides/RegionalComparisonSlide";
+import DigitalUptakeSlide from "./slides/DigitalUptakeSlide";
+import SummaryKeyTakeawaysSlide from "./slides/SummaryKeyTakeawaysSlide";
+import ThankYouSlide from "./slides/ThankYouSlide";
 import { useSlideNavigation } from "@/hooks/use-slide-navigation";
 
 const slides = [
@@ -43,7 +50,14 @@ const slides = [
   InnovationEcosystemSlide,       // 17
   DigitalConnectivitySlide,       // 18
   CompetitiveAdvantagesSlide,     // 19
-  CallToActionSlide,              // 20
+  ChallengesOpportunitiesSlide,   // 20
+  FutureGrowthSlide,              // 21
+  PolicyRecommendationsSlide,     // 22
+  CaseStudiesSlide,               // 23
+  RegionalComparisonSlide,        // 24
+  DigitalUptakeSlide,             // 25
+  SummaryKeyTakeawaysSlide,       // 26
+  ThankYouSlide,                  // 27
 ];
 
 const Presentation = () => {
