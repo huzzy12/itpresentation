@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SlideControls from "./SlideControls";
-import ExportButtons from "./ExportButtons";
 import TitleSlide from "./slides/TitleSlide";
 import IntroductionSlide from "./slides/IntroductionSlide";
 import EarlyStrugglesSlide from "./slides/EarlyStrugglesSlide";
@@ -72,8 +71,6 @@ const Presentation = () => {
     toggleFullscreen
   } = useSlideNavigation(slides.length);
 
-  const [isExporting, setIsExporting] = useState(false);
-
   // Track window dimensions for responsive layout
   const [dimensions, setDimensions] = useState({
     height: window.innerHeight,
@@ -96,7 +93,7 @@ const Presentation = () => {
   const slideComponents = slides.map((SlideComponent, index) => (
     <SlideComponent 
       key={index} 
-      isActive={currentSlide === index + 1 || isExporting} 
+      isActive={currentSlide === index + 1} 
     />
   ));
 
@@ -109,12 +106,6 @@ const Presentation = () => {
         onPrev={prevSlide}
         isFullscreen={isFullscreen}
         onToggleFullscreen={toggleFullscreen}
-        disabled={isExporting}
-      />
-
-      <ExportButtons 
-        onExportStart={() => setIsExporting(true)}
-        onExportEnd={() => setIsExporting(false)}
       />
 
       <div

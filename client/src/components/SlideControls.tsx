@@ -7,7 +7,6 @@ interface SlideControlsProps {
   onPrev: () => void;
   isFullscreen: boolean;
   onToggleFullscreen: () => void;
-  disabled?: boolean;
 }
 
 const SlideControls = ({
@@ -17,7 +16,6 @@ const SlideControls = ({
   onPrev,
   isFullscreen,
   onToggleFullscreen,
-  disabled = false
 }: SlideControlsProps) => {
   return (
     <motion.div 
@@ -29,7 +27,7 @@ const SlideControls = ({
     >
       <button 
         onClick={onPrev} 
-        disabled={currentSlide === 1 || disabled}
+        disabled={currentSlide === 1}
         className="text-gray-600 hover:text-primary transition-colors"
         aria-label="Previous slide"
       >
@@ -38,7 +36,7 @@ const SlideControls = ({
       <div className="text-sm font-medium text-gray-600">{currentSlide} / {totalSlides}</div>
       <button 
         onClick={onNext} 
-        disabled={currentSlide === totalSlides || disabled}
+        disabled={currentSlide === totalSlides}
         className="text-gray-600 hover:text-primary transition-colors"
         aria-label="Next slide"
       >
@@ -46,7 +44,6 @@ const SlideControls = ({
       </button>
       <button 
         onClick={onToggleFullscreen} 
-        disabled={disabled}
         className="text-gray-600 hover:text-primary transition-colors ml-2"
         aria-label="Toggle fullscreen"
       >
