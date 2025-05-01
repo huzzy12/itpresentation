@@ -15,6 +15,11 @@ import FreelanceEconomySlide from "./slides/FreelanceEconomySlide";
 import PolicyWinsSlide from "./slides/PolicyWinsSlide";
 import DigitalTransformationSlide from "./slides/DigitalTransformationSlide";
 import GdpTelecomSlide from "./slides/GdpTelecomSlide";
+import GdpContributionSlide from "./slides/GdpContributionSlide";
+import ForeignInvestmentSlide from "./slides/ForeignInvestmentSlide";
+import InnovationEcosystemSlide from "./slides/InnovationEcosystemSlide";
+import DigitalConnectivitySlide from "./slides/DigitalConnectivitySlide";
+import CompetitiveAdvantagesSlide from "./slides/CompetitiveAdvantagesSlide";
 import CallToActionSlide from "./slides/CallToActionSlide";
 import { useSlideNavigation } from "@/hooks/use-slide-navigation";
 
@@ -33,7 +38,12 @@ const slides = [
   PolicyWinsSlide,                // 12
   DigitalTransformationSlide,     // 13
   GdpTelecomSlide,                // 14
-  CallToActionSlide,              // 15
+  GdpContributionSlide,           // 15
+  ForeignInvestmentSlide,         // 16
+  InnovationEcosystemSlide,       // 17
+  DigitalConnectivitySlide,       // 18
+  CompetitiveAdvantagesSlide,     // 19
+  CallToActionSlide,              // 20
 ];
 
 const Presentation = () => {
