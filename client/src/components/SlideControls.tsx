@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 interface SlideControlsProps {
   currentSlide: number;
@@ -17,6 +18,51 @@ const SlideControls = ({
   isFullscreen,
   onToggleFullscreen,
 }: SlideControlsProps) => {
+  // Auto-hide controls in fullscreen mode
+  const [isVisible, setIsVisible] = useState(true);
+  const [mouseMoving, setMouseMoving] = useState(false);
+  const [hideTimeout, setHideTimeout] = useState<number | null>(null);
+
+  // Handle auto-hiding in fullscreen mode
+  useEffect(() => {
+    if (!isFullscreen) {
+      // Always visible in normal mode
+      setIsVisible(true);
+      return;
+    }
+
+    // In fullscreen: show controls when mouse moves, hide after delay
+    const handleMouseMove = () => {
+      setMouseMoving(true);
+      setIsVisible(true);
+      
+      // Clear any existing timeout
+      if (hideTimeout) {
+        window.clearTimeout(hideTimeout);
+      }
+      
+      // Set new timeout to hide controls
+      const timeout = window.setTimeout(() => {
+        setIsVisible(false);
+        setMouseMoving(false);
+      }, 2000);
+      
+      setHideTimeout(timeout as unknown as number);
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      if (hideTimeout) {
+        window.clearTimeout(hideTimeout);
+      }
+    };
+  }, [isFullscreen, hideTimeout]);
+
+  // Don't render if invisible in fullscreen
+  if (isFullscreen && !isVisible) return null;
+  
   return (
     <motion.div 
       className="fixed bottom-4 left-1/2 z-50 bg-white/80 backdrop-blur-sm rounded-full shadow-lg px-4 py-2 flex items-center space-x-6"
