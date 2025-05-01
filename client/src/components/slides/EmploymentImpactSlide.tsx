@@ -1,139 +1,208 @@
 import { motion } from "framer-motion";
 import { SlideProps } from "@/types";
-import ProgressStats from "@/components/ui/progress-stats";
-import { employmentStats, skillDistribution, geoDistribution } from "@/data/employment-data";
 
 const EmploymentImpactSlide = ({ isActive }: SlideProps) => {
+  const employmentStats = [
+    {
+      title: "IT Professionals",
+      value: "600,000+",
+      detail: "English-speaking IT/BPO professionals",
+      icon: "fa-laptop-code",
+      color: "primary"
+    },
+    {
+      title: "Startups Incubated",
+      value: "1,480+",
+      detail: "Through various incubation programs",
+      icon: "fa-seedling",
+      color: "green-600"
+    },
+    {
+      title: "Jobs Created",
+      value: "128,000+",
+      detail: "Through National Incubation Centers",
+      icon: "fa-briefcase",
+      color: "secondary"
+    }
+  ];
+
+  const skillClusters = [
+    { 
+      name: "Software Development", 
+      percentage: 35,
+      skills: ["Web Development", "Mobile Apps", "Enterprise Solutions"]
+    },
+    { 
+      name: "Digital Services", 
+      percentage: 25,
+      skills: ["BPO", "Customer Support", "Virtual Assistance"]
+    },
+    { 
+      name: "Design & Creative", 
+      percentage: 15,
+      skills: ["UI/UX", "Graphic Design", "Animation"]
+    },
+    { 
+      name: "Technical Specialties", 
+      percentage: 25,
+      skills: ["AI/ML", "Data Science", "Cybersecurity", "Blockchain"]
+    }
+  ];
+
+  const regions = [
+    { name: "Karachi", percentage: 30, color: "primary" },
+    { name: "Lahore", percentage: 28, color: "secondary" },
+    { name: "Islamabad", percentage: 25, color: "accent" },
+    { name: "Other Cities", percentage: 17, color: "gray-500" }
+  ];
+
   return (
     <section
-      data-slide="8"
-      className={`slide ${isActive ? 'active' : ''} absolute inset-0 bg-gray-50 flex flex-col justify-center items-center text-gray-900 p-8`}
+      data-slide="11"
+      className={`slide ${isActive ? 'active' : ''} absolute inset-0 bg-white flex flex-col justify-center items-center text-gray-900 p-8`}
     >
       <div className="max-w-5xl mx-auto">
         <motion.h2
-          className="font-heading text-4xl text-center mb-8"
+          className="font-heading text-4xl text-center mb-6"
           initial={{ opacity: 0, y: 20 }}
           animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5 }}
         >
-          Employment Impact
+          Employment <span className="text-primary">Impact</span>
         </motion.h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Left Panel: Numbers */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+          {employmentStats.map((stat, index) => (
+            <motion.div
+              key={stat.title}
+              className="bg-gray-50 rounded-xl p-6 shadow-md"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.5, delay: 0.2 + (index * 0.1) }}
+            >
+              <div className={`w-14 h-14 rounded-full bg-${stat.color}/20 flex items-center justify-center mb-4`}>
+                <i className={`fas ${stat.icon} text-${stat.color} text-xl`}></i>
+              </div>
+              <h3 className="font-data text-3xl font-bold mb-2">{stat.value}</h3>
+              <p className="font-data font-semibold text-lg mb-1">{stat.title}</p>
+              <p className="text-sm text-gray-600">{stat.detail}</p>
+            </motion.div>
+          ))}
+        </div>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Left Column - Skill Distribution */}
           <motion.div
-            className="bg-white rounded-xl p-6 shadow-md"
+            className="bg-gray-50 rounded-xl p-6 shadow-md"
             initial={{ opacity: 0, x: -20 }}
             animate={isActive ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
           >
-            <h3 className="font-data font-semibold text-xl text-primary mb-6">Employment Statistics</h3>
+            <h3 className="font-data font-semibold text-lg mb-4">Skill Distribution</h3>
             
-            <div className="space-y-6">
-              {employmentStats.map((stat, index) => (
-                <motion.div
-                  key={stat.title}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-                  transition={{ duration: 0.3, delay: 0.2 + (index * 0.1) }}
+            <div className="space-y-4">
+              {skillClusters.map((cluster, index) => (
+                <motion.div 
+                  key={cluster.name}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={isActive ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                  transition={{ duration: 0.5, delay: 0.6 + (index * 0.1) }}
                 >
-                  <ProgressStats
-                    title={stat.title}
-                    value={stat.value}
-                    color={stat.color}
-                    percentage={stat.percentage}
-                    subtitle={stat.subtitle}
-                  />
+                  <div className="flex items-center justify-between mb-1">
+                    <p className="font-medium text-sm">{cluster.name}</p>
+                    <p className="text-sm font-semibold">{cluster.percentage}%</p>
+                  </div>
+                  <div className="w-full bg-gray-200 h-2 rounded-full">
+                    <div 
+                      className="bg-primary h-2 rounded-full" 
+                      style={{ width: `${cluster.percentage}%` }}
+                    ></div>
+                  </div>
+                  <div className="mt-1 flex flex-wrap gap-2">
+                    {cluster.skills.map((skill, idx) => (
+                      <span 
+                        key={idx} 
+                        className="inline-block bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </motion.div>
               ))}
             </div>
-            
-            <motion.div
-              className="mt-6 p-3 bg-gray-50 rounded-lg"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-            >
-              <p className="text-sm text-gray-600">
-                <i className="fas fa-lightbulb text-accent mr-2"></i> 
-                With each IT job estimated to create 3-4 indirect jobs, the sector's total economic impact supports over 2 million livelihoods.
-              </p>
-            </motion.div>
           </motion.div>
           
-          {/* Right Panel: Distribution & Impact */}
+          {/* Right Column - Regional Distribution */}
           <motion.div
-            className="bg-white rounded-xl p-6 shadow-md"
+            className="bg-gray-50 rounded-xl p-6 shadow-md"
             initial={{ opacity: 0, x: 20 }}
             animate={isActive ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
           >
-            <h3 className="font-data font-semibold text-xl text-secondary mb-6">Geographic & Sectoral Distribution</h3>
+            <h3 className="font-data font-semibold text-lg mb-4">Geographic Distribution</h3>
             
-            {/* Geographic Distribution */}
-            <motion.div
-              className="mb-6"
-              initial={{ opacity: 0, y: 10 }}
-              animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-              transition={{ duration: 0.3, delay: 0.3 }}
-            >
-              <h4 className="font-medium text-gray-700 mb-3">IT Employment by City</h4>
-              <div className="relative">
-                <div className="grid grid-cols-2 gap-2">
-                  {geoDistribution.map((city, index) => (
-                    <div key={city.name} className="flex items-center">
-                      <div 
-                        className={`w-${16 - (index * 2)} h-4 bg-${city.color} rounded-sm mr-2`}
-                      ></div>
-                      <span className="text-xs text-gray-600">{city.name} ({city.percentage}%)</span>
+            <div className="grid grid-cols-2 gap-6">
+              <div className="relative pt-5">
+                <div className="absolute top-0 left-0 right-0 flex justify-center">
+                  <div className="w-32 h-32 rounded-full border-8 border-gray-200 flex items-center justify-center">
+                    <div className="text-center">
+                      <p className="text-xs text-gray-500">IT Workforce</p>
+                      <p className="font-data font-bold text-xl">600K+</p>
                     </div>
+                  </div>
+                </div>
+                
+                <div className="pt-36">
+                  {regions.map((region, index) => (
+                    <motion.div 
+                      key={region.name}
+                      className="mb-2 last:mb-0"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                      transition={{ duration: 0.3, delay: 0.7 + (index * 0.1) }}
+                    >
+                      <div className={`h-3 w-3 rounded-full bg-${region.color} inline-block mr-2`}></div>
+                      <span className="text-sm">{region.name}</span>
+                    </motion.div>
                   ))}
                 </div>
               </div>
-            </motion.div>
-            
-            {/* Skill Distribution */}
-            <motion.div
-              className="mb-6"
-              initial={{ opacity: 0, y: 10 }}
-              animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-              transition={{ duration: 0.3, delay: 0.4 }}
-            >
-              <h4 className="font-medium text-gray-700 mb-3">Top IT Skills in Demand</h4>
               
-              <div className="space-y-3">
-                {skillDistribution.map((skill, index) => (
-                  <motion.div
-                    key={skill.name}
-                    className="flex items-center"
-                    initial={{ opacity: 0, x: 10 }}
-                    animate={isActive ? { opacity: 1, x: 0 } : { opacity: 0, x: 10 }}
-                    transition={{ duration: 0.2, delay: 0.5 + (index * 0.1) }}
+              <div className="space-y-4">
+                {regions.map((region, index) => (
+                  <motion.div 
+                    key={region.name}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={isActive ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
+                    transition={{ duration: 0.5, delay: 0.6 + (index * 0.1) }}
                   >
-                    <div className="w-1/4 text-xs text-gray-600">{skill.name}</div>
-                    <div className="w-3/4 bg-gray-200 rounded-full h-2.5">
+                    <div className="flex items-center justify-between mb-1">
+                      <p className="font-medium text-sm">{region.name}</p>
+                      <p className="text-sm font-semibold">{region.percentage}%</p>
+                    </div>
+                    <div className="w-full bg-gray-200 h-2 rounded-full">
                       <div 
-                        className={`bg-${skill.color} h-2.5 rounded-full`} 
-                        style={{ width: `${skill.percentage}%` }}
+                        className={`bg-${region.color} h-2 rounded-full`} 
+                        style={{ width: `${region.percentage}%` }}
                       ></div>
                     </div>
                   </motion.div>
                 ))}
+                
+                <motion.div
+                  className="mt-6 pt-4 border-t border-gray-200"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.5, delay: 1 }}
+                >
+                  <p className="text-xs text-gray-500">
+                    <i className="fas fa-info-circle mr-1"></i>
+                    Source: Finance Division, Pakistan Economic Survey
+                  </p>
+                </motion.div>
               </div>
-            </motion.div>
-            
-            {/* Impact Quote */}
-            <motion.div
-              className="mt-6 bg-gray-50 rounded-lg p-4 border-l-4 border-secondary"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.5, delay: 0.8 }}
-            >
-              <p className="italic text-gray-600 text-sm">
-                "Pakistan's IT sector has emerged as a vital source of quality employment for the youth, offering competitive salaries averaging 2-3x higher than traditional sectors."
-              </p>
-              <p className="text-right text-xs text-gray-500 mt-2">— Pakistan Economic Survey 2023-24</p>
-            </motion.div>
+            </div>
           </motion.div>
         </div>
       </div>
